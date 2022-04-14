@@ -44,7 +44,7 @@
           </li>
 
           <li class="nav-item">
-            <a href="" class="nav-link {{ request()->is('admin/appointments') ? 'active' : '' }}">
+            <a href="{{route('admin.appointments')}}" class="nav-link {{ request()->is('admin/appointments') ? 'active' : '' }}">
               <i class="nav-icon fas fa-handshake"></i>
               <p>
                 Appointments
