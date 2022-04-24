@@ -10,27 +10,28 @@ use Livewire\Component;
 class CreateAppointmentForm extends Component
 {
     public $state = [
-        'status'=>'SCHEDULED',
+        'status' => 'SCHEDULED',
     ];
 
     public function createAppointment()
     {
         Validator::make(
-            $this->state, 
+            $this->state,
             [
-            'client_id'=>'required',
-            'date'=>'required',
-            'time'=>'required',
-            'note'=>'nullable',
-            'status'=>'required|in:SCHEDULED, CLOSED',   
-            ], 
-            ['client_id.required'=>'The Client field is required!'
+                'client_id' => 'required',
+                'date' => 'required',
+                'time' => 'required',
+                'note' => 'nullable',
+                'status' => 'required|in:SCHEDULED,CLOSED',
+            ],
+            [
+                'client_id.required' => 'The Client field is required!'
             ]
-            )->validate();
+        )->validate();
 
         Appointment::create($this->state);
 
-        $this->dispatchBrowserEvent('alert', ['message'=>'Appointed created successfully!']);
+        $this->dispatchBrowserEvent('alert', ['message' => 'Appointed created successfully!']);
     }
 
     public function render()
